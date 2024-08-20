@@ -121,11 +121,20 @@
         </div>
       </div>
 
-      <button class="w-full py-4 bg-red rounded-full mt-5">
+      <button
+        class="w-full py-4 bg-red rounded-full mt-5"
+        (click)="openModal()"
+      >
         <p class="text-preset-3-semibold text-white">Confirm Order</p>
       </button>
     </div>
   </div>
+  <app-orderconfirm-modal
+    [isVisible]="isModalVisible"
+    (closeModal)="closeModal()"
+  >
+    <p>Your modal content goes here.</p>
+  </app-orderconfirm-modal>
 </div>
 <!-- <app-card
   *ngFor="let dessert of desserts"

@@ -9,11 +9,12 @@ import { Dessert } from './models/image.model';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  title = 'productListWithCart';
   private subscriptions: Subscription = new Subscription();
   desserts: Dessert[] = [];
   incrementState: boolean = false;
   quantityState: number = 0;
+
+  isModalVisible: boolean = false;
 
   constructor(private store: StoreService) {}
   ngOnInit(): void {
@@ -43,5 +44,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   handleDecrementQuantity(dessert: any) {
     // Handle decrement quantity logic
+  }
+
+  openModal() {
+    this.isModalVisible = true;
+  }
+
+  closeModal() {
+    this.isModalVisible = false;
   }
 }
