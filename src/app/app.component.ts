@@ -14,6 +14,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   incrementState: boolean = false;
   quantityState: number = 0;
 
+  singleDessert: Dessert | undefined;
+
   isModalVisible: boolean = false;
 
   constructor(private store: StoreService) {}
@@ -27,7 +29,8 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.desserts = data;
       })
     );
-    console.log('desserts in app: ', this.desserts);
+    this.singleDessert = this.desserts[0];
+    console.log('single desserts in app: ', this.singleDessert);
   }
 
   ngOnDestroy(): void {
