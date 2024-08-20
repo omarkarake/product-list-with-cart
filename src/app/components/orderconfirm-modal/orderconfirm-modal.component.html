@@ -2,6 +2,7 @@
     <div class="fixed inset-0 bg-black opacity-50" (click)="close()"></div>
     <div
       class="bg-white w-full md:w-[85%] lg:w-[592px] h-auto p-6 rounded-t-lg md:rounded-lg transform transition-transform duration-300 ease-in-out"
+      [@slideUpDown]
     >
       <button class="absolute top-4 right-4" (click)="close()">Close</button>
       <ng-content></ng-content>
