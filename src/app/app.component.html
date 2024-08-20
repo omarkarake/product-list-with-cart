@@ -1,5 +1,44 @@
-<h1 class="text-3xl font-bold underline font-red-hat">
-  Your Cart (0)
-</h1>
-
-<app-card></app-card>
+<div
+  class="w-full min-h-screen bg-rose-50 flex flex-col lg:flex-row justify-between px-[5%]"
+>
+  <div class="w-full lg:w-[68%]">
+    <div class="p-6">
+      <h1 class="text-preset-1-bold text-rose-900">Desserts</h1>
+      <div
+        class="mt-2 md:mt-0 flex flex-wrap justify-between"
+        >
+        <app-card
+        *ngFor="let dessert of desserts"
+          [singleDessert]="dessert"
+          [incrementState]="incrementState"
+          [quantityState]="quantityState"
+          (addToCart)="handleAddToCart(dessert)"
+          (incrementQuantity)="handleIncrementQuantity(dessert)"
+          (decrementQuantity)="handleDecrementQuantity(dessert)"
+        ></app-card>
+      </div>
+    </div>
+  </div>
+  <div class="w-full mt-2 md:mt-0 lg:w-[30%] rounded-xl lg:mt-6">
+    <div class="bg-white p-6">
+      <p class="text-preset-2-bold text-red">Your Cart (0)</p>
+      <div class="flex flex-col items-center">
+        <div><img src="../assets/images/illustration-empty-cart.svg" /></div>
+        <div>
+          <p class="text-preset-4-semibold text-rose-500">
+            Your added items will appear here
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <app-card
+  *ngFor="let dessert of desserts"
+  [singleDessert]="dessert"
+  [incrementState]="incrementState"
+  [quantityState]="quantityState"
+  (addToCart)="handleAddToCart(dessert)"
+  (incrementQuantity)="handleIncrementQuantity(dessert)"
+  (decrementQuantity)="handleDecrementQuantity(dessert)"
+></app-card> -->
