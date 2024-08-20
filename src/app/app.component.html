@@ -4,11 +4,9 @@
   <div class="w-full lg:w-[68%]">
     <div class="p-6">
       <h1 class="text-preset-1-bold text-rose-900">Desserts</h1>
-      <div
-        class="mt-2 md:mt-0 flex flex-wrap justify-between"
-        >
+      <div class="mt-2 md:mt-0 flex flex-wrap justify-between">
         <app-card
-        *ngFor="let dessert of desserts"
+          *ngFor="let dessert of desserts"
           [singleDessert]="dessert"
           [incrementState]="incrementState"
           [quantityState]="quantityState"
@@ -19,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="w-full mt-2 md:mt-0 lg:w-[30%] rounded-xl lg:mt-6">
+  <!-- <div class="w-full mt-2 md:mt-0 lg:w-[30%] rounded-xl lg:mt-6">
     <div class="bg-white p-6">
       <p class="text-preset-2-bold text-red">Your Cart (0)</p>
       <div class="flex flex-col items-center">
@@ -30,6 +28,102 @@
           </p>
         </div>
       </div>
+    </div>
+  </div> -->
+  <div class="w-full mt-2 md:mt-0 lg:w-[30%] rounded-xl lg:mt-6">
+    <div class="bg-white p-6">
+      <p class="text-preset-2-bold text-red">Your Cart (7)</p>
+      <div
+        class="w-full flex justify-between py-4 border-b-[2px] border-rose-100"
+      >
+        <div class="w-[90%]">
+          <div><p class="text-preset-4-semibold">Classic Tiramisu</p></div>
+          <div class="flex gap-3">
+            <p class="text-preset-4-semibold text-red">1x</p>
+            <p class="text-preset-4-regular text-rose-500">&commat; $5.50</p>
+            <p class="text-preset-4-semibold text-rose-500">$5.50</p>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center">
+          <div
+            class="w-5 h-5 rounded-full border-rose-400 border-2 flex justify-center items-center cursor-pointer"
+          >
+            <img
+              src="../assets/images/icon-remove-item.svg"
+              class="w-[12px] h-[16px]"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full flex justify-between py-4 border-b-[2px] border-rose-100"
+      >
+        <div class="w-[90%]">
+          <div><p class="text-preset-4-semibold">Classic Tiramisu</p></div>
+          <div class="flex gap-3">
+            <p class="text-preset-4-semibold text-red">1x</p>
+            <p class="text-preset-4-regular text-rose-500">&commat; $5.50</p>
+            <p class="text-preset-4-semibold text-rose-500">$5.50</p>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center">
+          <div
+            class="w-5 h-5 rounded-full border-rose-400 border-2 flex justify-center items-center cursor-pointer"
+          >
+            <img
+              src="../assets/images/icon-remove-item.svg"
+              class="w-[12px] h-[16px]"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full flex justify-between py-4 border-b-[2px] border-rose-100"
+      >
+        <div class="w-[90%]">
+          <div><p class="text-preset-4-semibold">Classic Tiramisu</p></div>
+          <div class="flex gap-3">
+            <p class="text-preset-4-semibold text-red">1x</p>
+            <p class="text-preset-4-regular text-rose-500">&commat; $5.50</p>
+            <p class="text-preset-4-semibold text-rose-500">$5.50</p>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center">
+          <div
+            class="w-5 h-5 rounded-full border-rose-400 border-2 flex justify-center items-center cursor-pointer"
+          >
+            <img
+              src="../assets/images/icon-remove-item.svg"
+              class="w-[12px] h-[16px]"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center mt-6">
+        <div>
+          <p class="text-preset-4-regular text-rose-900">Order Total</p>
+        </div>
+        <div>
+          <p class="text-preset-2-bold text-rose-900">$46.50</p>
+        </div>
+      </div>
+
+      <div
+        class="flex justify-center items-center py-4 bg-rose-50 rounded-lg mt-3"
+      >
+        <div><img src="../assets/images/icon-carbon-neutral.svg" /></div>
+        <div>
+          <p class="text-preset-4-regular text-rose-900">
+            This is a
+            <span class="text-preset-4-semibold">carbon-neutral</span> delivery
+          </p>
+        </div>
+      </div>
+
+      <button class="w-full py-4 bg-red rounded-full mt-5">
+        <p class="text-preset-3-semibold text-white">Confirm Order</p>
+      </button>
     </div>
   </div>
 </div>
