@@ -24,7 +24,7 @@
         'bg-white': !incrementState,
         'bg-red': incrementState
       }"
-      (click)="addToCartActive()"
+      (click)="!incrementState && addToCartActive()"
     >
       <div
         [ngClass]="{ block: !incrementState, hidden: incrementState }"
