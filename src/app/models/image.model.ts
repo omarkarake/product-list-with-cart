@@ -6,6 +6,7 @@ export interface Image {
 }
 
 export interface Dessert {
+  id: number;
   image: Image;
   name: string;
   category: string;

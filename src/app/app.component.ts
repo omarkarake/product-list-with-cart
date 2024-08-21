@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
   desserts: Dessert[] = [];
   cart: Dessert[] = [];
-  incrementState: boolean = false;
+  incrementStates: { [key: number]: boolean } = {};
   quantityState: number = 0;
 
   singleDessert: Dessert | undefined;
@@ -46,6 +46,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   handleAddToCart(dessert: Dessert) {
     this.store.addToCart(dessert);
+    this.incrementStates[dessert.id] = true;
   }
 
   handleIncrementQuantity(dessert: any) {
@@ -58,6 +59,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   handleRemoveFromCart(dessert: Dessert) {
     this.store.removeFromCart(dessert);
+    delete this.incrementStates[dessert.id];
   }
 
   openModal() {

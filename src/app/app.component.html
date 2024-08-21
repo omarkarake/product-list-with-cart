@@ -8,7 +8,7 @@
         <app-card
           *ngFor="let dessert of desserts; index as i"
           [singleDessert]="dessert"
-          [incrementState]="incrementState"
+          [incrementState]="incrementStates[dessert.id] || false"
           [quantityState]="quantityState"
           (addToCart)="handleAddToCart(dessert)"
           (incrementQuantity)="handleIncrementQuantity(dessert)"
@@ -162,12 +162,3 @@
     </div>
   </app-orderconfirm-modal>
 </div>
-<!-- <app-card
-  *ngFor="let dessert of desserts"
-  [singleDessert]="dessert"
-  [incrementState]="incrementState"
-  [quantityState]="quantityState"
-  (addToCart)="handleAddToCart(dessert)"
-  (incrementQuantity)="handleIncrementQuantity(dessert)"
-  (decrementQuantity)="handleDecrementQuantity(dessert)"
-></app-card> -->
