@@ -95,6 +95,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cart = [];
     this.incrementStates = {};
     this.quantityStates = {};
+    this.store.resetCart();
   }
 
   getCartCount(): number {

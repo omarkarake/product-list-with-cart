@@ -46,4 +46,8 @@ export class StoreService {
   getCartCount(): number {
     return this.cartSubject.value.length;
   }
+
+  resetCart() {
+    this.cartSubject.next([]);
+  }
 }
