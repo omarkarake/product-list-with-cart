@@ -11,6 +11,9 @@ export class StoreService {
   private dessertSubject = new BehaviorSubject<Dessert[]>([]);
   desserts$ = this.dessertSubject.asObservable();
 
+  private cartSubject = new BehaviorSubject<Dessert[]>([]);
+  cart$ = this.cartSubject.asObservable();
+
   constructor(private http: HttpClient) {}
 
   init(): void {
@@ -27,5 +30,14 @@ export class StoreService {
         })
       )
       .subscribe((data) => this.dessertSubject.next(data));
+  }
+
+  addToCart(dessert: Dessert) {
+    const currentCart = this.cartSubject.value;
+    this.cartSubject.next([...currentCart, dessert]);
+  }
+
+  getCartCount(): number {
+    return this.cartSubject.value.length;
   }
 }

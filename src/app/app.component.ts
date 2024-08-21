@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, OnDestroy } from '@angular/core';
 import { StoreService } from './store/store.service';
 import { Subscription } from 'rxjs';
 import { Dessert } from './models/image.model';
@@ -6,11 +6,12 @@ import { Dessert } from './models/image.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
   desserts: Dessert[] = [];
+  cart: Dessert[] = [];
   incrementState: boolean = false;
   quantityState: number = 0;
 
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   isModalVisible: boolean = false;
 
   constructor(private store: StoreService) {}
+
   ngOnInit(): void {
     this.store.init();
   }
@@ -29,6 +31,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.desserts = data;
       })
     );
+    this.subscriptions.add(
+      this.store.cart$.subscribe((cart) => {
+        this.cart = cart;
+      })
+    );
     this.singleDessert = this.desserts[0];
     console.log('single desserts in app: ', this.singleDessert);
   }
@@ -37,8 +44,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.subscriptions.unsubscribe();
   }
 
-  handleAddToCart(dessert: any) {
-    // Handle add to cart logic
+  handleAddToCart(dessert: Dessert) {
+    this.store.addToCart(dessert);
   }
 
   handleIncrementQuantity(dessert: any) {
@@ -55,5 +62,15 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   closeModal() {
     this.isModalVisible = false;
+  }
+
+  getCartCount(): number {
+    return this.store.getCartCount();
+  }
+
+  calculateTotal(){
+    return this.cart.reduce((acc, dessert) => {
+      return acc + dessert.price;
+    }, 0);
   }
 }
