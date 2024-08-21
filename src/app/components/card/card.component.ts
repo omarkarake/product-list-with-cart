@@ -9,7 +9,7 @@ import { Dessert } from '../../models/image.model';
 export class CardComponent {
   @Input() singleDessert: Dessert | undefined;
   @Input() incrementState: boolean = false;
-  @Input() quantityState: number = 0;
+  @Input() quantityState: number = 1;
 
   @Output() addToCart = new EventEmitter<void>();
   @Output() incrementQuantity = new EventEmitter<void>();

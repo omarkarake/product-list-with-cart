@@ -9,7 +9,7 @@
           *ngFor="let dessert of desserts; index as i"
           [singleDessert]="dessert"
           [incrementState]="incrementStates[dessert.id] || false"
-          [quantityState]="quantityState"
+          [quantityState]="quantityStates[dessert.id]"
           (addToCart)="handleAddToCart(dessert)"
           (incrementQuantity)="handleIncrementQuantity(dessert)"
           (decrementQuantity)="handleDecrementQuantity(dessert)"

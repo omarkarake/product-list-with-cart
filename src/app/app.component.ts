@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   desserts: Dessert[] = [];
   cart: Dessert[] = [];
   incrementStates: { [key: number]: boolean } = {};
-  quantityState: number = 0;
+  quantityStates: { [key: number]: number } = {};
 
   singleDessert: Dessert | undefined;
 
@@ -47,19 +47,35 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   handleAddToCart(dessert: Dessert) {
     this.store.addToCart(dessert);
     this.incrementStates[dessert.id] = true;
-  }
-
-  handleIncrementQuantity(dessert: any) {
-    // Handle increment quantity logic
-  }
-
-  handleDecrementQuantity(dessert: any) {
-    // Handle decrement quantity logic
+    this.quantityStates[dessert.id] =
+      (this.quantityStates[dessert.id] || 0) + 1;
   }
 
   handleRemoveFromCart(dessert: Dessert) {
     this.store.removeFromCart(dessert);
     delete this.incrementStates[dessert.id];
+    delete this.quantityStates[dessert.id];
+  }
+
+  handleIncrementQuantity(dessert: any) {
+    if (this.quantityStates[dessert.id] !== undefined) {
+      this.quantityStates[dessert.id] += 1; // Increment quantity
+    }
+  }
+
+  handleDecrementQuantity(dessert: Dessert) {
+    if (
+      this.quantityStates[dessert.id] !== undefined &&
+      this.quantityStates[dessert.id] > 0
+    ) {
+      this.quantityStates[dessert.id] -= 1; // Decrement quantity
+      console.log('desert and quantity: ', dessert, this.quantityStates);
+      if (this.quantityStates[dessert.id] === 0) {
+        this.store.removeFromCart(dessert);
+        delete this.quantityStates[dessert.id];
+        delete this.incrementStates[dessert.id];
+      }
+    }
   }
 
   openModal() {
@@ -74,7 +90,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.store.getCartCount();
   }
 
-  calculateTotal(){
+  calculateTotal() {
     return this.cart.reduce((acc, dessert) => {
       return acc + dessert.price;
     }, 0);
