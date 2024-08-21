@@ -12,6 +12,7 @@
       <img
         [src]="singleDessert?.image?.mobile"
         class="w-full h-auto rounded-lg"
+        [ngClass]="{ 'border-2 border-red': incrementState }"
       />
     </picture>
     <div
