@@ -1,32 +1,54 @@
 <div class="w-full h-auto md:w-[213px] lg:w-[250px]">
   <div class="relative flex justify-center">
     <picture>
-      <source [srcset]="singleDessert?.image?.desktop" media="(min-width: 1024px)" />
-      <source [srcset]="singleDessert?.image?.tablet" media="(min-width: 768px)" />
-      <img [src]="singleDessert?.image?.mobile" class="w-full h-auto rounded-lg" />
+      <source
+        [srcset]="singleDessert?.image?.desktop"
+        media="(min-width: 1024px)"
+      />
+      <source
+        [srcset]="singleDessert?.image?.tablet"
+        media="(min-width: 768px)"
+      />
+      <img
+        [src]="singleDessert?.image?.mobile"
+        class="w-full h-auto rounded-lg"
+      />
     </picture>
     <div
-      class="w-40 h-11 py-3 px-5 border bg-white rounded-full hover:text-red absolute bottom-[-22px]"
+      class="w-40 h-11 py-3 px-5 border rounded-full hover:text-red absolute bottom-[-22px]"
       [ngClass]="{
         'border-rose-400': !incrementState,
         'cursor-pointer': !incrementState,
         'border-red': incrementState,
+        'bg-white': !incrementState,
         'bg-red': incrementState
       }"
       (click)="addToCartActive()"
     >
-      <div [ngClass]="{ block: !incrementState, hidden: incrementState }" class="flex justify-center items-center gap-1">
-        <img src="../../../assets/images/icon-add-to-cart.svg" class="w-[18px] h-[18px]" />
+      <div
+        [ngClass]="{ block: !incrementState, hidden: incrementState }"
+        class="flex justify-center items-center gap-1"
+      >
+        <img
+          src="../../../assets/images/icon-add-to-cart.svg"
+          class="w-[18px] h-[18px]"
+        />
         <div class="w-[70%]">
           <p class="text-preset-4-semibold">Add to Cart</p>
         </div>
       </div>
-      <div [ngClass]="{ hidden: !incrementState, block: incrementState }" class="flex justify-between items-center gap-1">
+      <div
+        [ngClass]="{ hidden: !incrementState, block: incrementState }"
+        class="flex justify-between items-center gap-1"
+      >
         <div
           class="w-5 h-5 flex justify-center items-center rounded-full border-white border-2 cursor-pointer"
           (click)="decrementQuantityHandler($event)"
         >
-          <img src="../../../assets/images/icon-decrement-quantity.svg" class="w-[12px] h-[16px]" />
+          <img
+            src="../../../assets/images/icon-decrement-quantity.svg"
+            class="w-[12px] h-[16px]"
+          />
         </div>
         <div>
           <p class="text-preset-4-semibold text-white">{{ quantityState }}</p>
@@ -35,14 +57,21 @@
           class="w-5 h-5 flex justify-center items-center rounded-full border-white border-2 cursor-pointer"
           (click)="incrementQuantityHandler($event)"
         >
-          <img src="../../../assets/images/icon-increment-quantity.svg" class="w-[12px] h-[16px]" />
+          <img
+            src="../../../assets/images/icon-increment-quantity.svg"
+            class="w-[12px] h-[16px]"
+          />
         </div>
       </div>
     </div>
   </div>
   <div class="mt-9">
     <p class="text-preset-4-regular text-rose-500">{{ singleDessert?.name }}</p>
-    <p class="text-preset-3-semibold text-rose-900">{{ singleDessert?.category }}</p>
-    <p class="text-preset-3-semibold text-red">{{ singleDessert?.price | currency: 'USD':'symbol':'1.2-2' }}</p>
+    <p class="text-preset-3-semibold text-rose-900">
+      {{ singleDessert?.category }}
+    </p>
+    <p class="text-preset-3-semibold text-red">
+      {{ singleDessert?.price | currency : "USD" : "symbol" : "1.2-2" }}
+    </p>
   </div>
 </div>
