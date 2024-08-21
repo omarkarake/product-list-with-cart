@@ -4,7 +4,7 @@
   <div class="w-full lg:w-[68%]">
     <div class="p-6">
       <h1 class="text-preset-1-bold text-rose-900">Desserts</h1>
-      <div class="mt-2 md:mt-0 flex flex-wrap justify-between">
+      <div class="mt-2 md:mt-0 flex flex-wrap gap-3 justify-between">
         <app-card
           *ngFor="let dessert of desserts; index as i"
           [singleDessert]="dessert"
