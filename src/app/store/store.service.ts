@@ -37,6 +37,12 @@ export class StoreService {
     this.cartSubject.next([...currentCart, dessert]);
   }
 
+  removeFromCart(dessert: Dessert) {
+    const currentCart = this.cartSubject.value;
+    const updatedCart = currentCart.filter(item => item !== dessert);
+    this.cartSubject.next(updatedCart);
+  }
+
   getCartCount(): number {
     return this.cartSubject.value.length;
   }

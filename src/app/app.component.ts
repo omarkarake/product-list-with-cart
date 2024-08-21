@@ -56,6 +56,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     // Handle decrement quantity logic
   }
 
+  handleRemoveFromCart(dessert: Dessert) {
+    this.store.removeFromCart(dessert);
+  }
+
   openModal() {
     this.isModalVisible = true;
   }

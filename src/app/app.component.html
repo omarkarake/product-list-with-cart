@@ -32,7 +32,7 @@
   </div> -->
   <div class="w-full mt-2 md:mt-0 lg:w-[30%] rounded-xl lg:mt-6">
     <div class="bg-white p-6">
-      <p class="text-preset-2-bold text-red">Your Cart (7)</p>
+      <p class="text-preset-2-bold text-red">Your Cart ({{ getCartCount() }})</p>
       <!-- product should go in cart when user click on the card -->
       <div
         *ngFor="let item of cart"
@@ -55,6 +55,7 @@
         <div class="flex flex-col justify-center">
           <div
             class="w-5 h-5 rounded-full border-rose-400 border-2 flex justify-center items-center cursor-pointer"
+            (click)="handleRemoveFromCart(item)"
           >
             <img
               src="../assets/images/icon-remove-item.svg"
