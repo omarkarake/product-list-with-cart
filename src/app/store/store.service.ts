@@ -18,6 +18,10 @@ export class StoreService {
 
   init(): void {
     this.getDesserts();
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      this.cartSubject.next(JSON.parse(storedCart));
+    }
   }
 
   getDesserts() {
@@ -39,7 +43,7 @@ export class StoreService {
 
   removeFromCart(dessert: Dessert) {
     const currentCart = this.cartSubject.value;
-    const updatedCart = currentCart.filter(item => item !== dessert);
+    const updatedCart = currentCart.filter((item) => item !== dessert);
     this.cartSubject.next(updatedCart);
   }
 
