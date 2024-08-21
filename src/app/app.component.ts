@@ -37,7 +37,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       })
     );
     this.singleDessert = this.desserts[0];
-    console.log('single desserts in app: ', this.singleDessert);
   }
 
   ngOnDestroy(): void {
@@ -69,7 +68,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       this.quantityStates[dessert.id] > 0
     ) {
       this.quantityStates[dessert.id] -= 1; // Decrement quantity
-      console.log('desert and quantity: ', dessert, this.quantityStates);
       if (this.quantityStates[dessert.id] === 0) {
         this.store.removeFromCart(dessert);
         delete this.quantityStates[dessert.id];
