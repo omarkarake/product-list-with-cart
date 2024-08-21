@@ -82,6 +82,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     return dessert.price * (this.quantityStates[dessert.id] || 0);
   }
 
+  calculateOrderTotal(): number {
+    return this.cart.reduce((total, dessert) => total + this.calculateTotalPrice(dessert), 0);
+  }
+
   openModal() {
     this.isModalVisible = true;
   }
@@ -92,11 +96,5 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getCartCount(): number {
     return this.store.getCartCount();
-  }
-
-  calculateOrderTotal() {
-    return this.cart.reduce((acc, dessert) => {
-      return acc + dessert.price;
-    }, 0);
   }
 }
