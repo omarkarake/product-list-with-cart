@@ -83,7 +83,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   calculateOrderTotal(): number {
-    return this.cart.reduce((total, dessert) => total + this.calculateTotalPrice(dessert), 0);
+    return this.cart.reduce(
+      (total, dessert) => total + this.calculateTotalPrice(dessert),
+      0
+    );
   }
 
   openModal() {
@@ -96,6 +99,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     this.incrementStates = {};
     this.quantityStates = {};
     this.store.resetCart();
+  }
+
+  closeModalOnly() {
+    this.isModalVisible = false;
   }
 
   getCartCount(): number {
