@@ -4,7 +4,7 @@
   <div class="w-full lg:w-[68%]">
     <div class="p-6">
       <h1 class="text-preset-1-bold text-rose-900">Desserts</h1>
-      <div class="mt-2 md:mt-0 flex flex-wrap gap-3 justify-between">
+      <div class="md:mt-0 flex flex-wrap justify-between items-center">
         <app-card
           *ngFor="let dessert of desserts; index as i"
           [singleDessert]="dessert"
@@ -118,7 +118,7 @@
       <div class="mt-2">
         <p class="text-rose-500">We hope you enjoy your food!</p>
       </div>
-      <div class="bg-rose-50 px-4 rounded-lg">
+      <div class="bg-rose-50 px-4 rounded-lg h-[300px] overflow-y-scroll">
         <div
           *ngFor="let item of cart"
           class="w-full flex justify-between gap-3 py-4 border-b-[2px] border-rose-100"
@@ -145,7 +145,10 @@
           </div>
           <div class="flex flex-col justify-center">
             <p class="text-preset-4-semibold text-rose-500">
-              {{ calculateTotalPrice(item) | currency : "USD" : "symbol" : "1.2-2" }}
+              {{
+                calculateTotalPrice(item)
+                  | currency : "USD" : "symbol" : "1.2-2"
+              }}
             </p>
           </div>
         </div>
@@ -155,7 +158,9 @@
           </div>
           <div>
             <p class="text-preset-2-bold text-rose-900">
-              {{ calculateOrderTotal() | currency : "USD" : "symbol" : "1.2-2" }}
+              {{
+                calculateOrderTotal() | currency : "USD" : "symbol" : "1.2-2"
+              }}
             </p>
           </div>
         </div>
