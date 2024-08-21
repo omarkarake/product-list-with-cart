@@ -92,6 +92,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   closeModal() {
     this.isModalVisible = false;
+    this.cart = [];
+    this.incrementStates = {};
+    this.quantityStates = {};
   }
 
   getCartCount(): number {
