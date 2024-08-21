@@ -33,12 +33,17 @@
             <p class="text-preset-4-semibold">{{ item.name }}</p>
           </div>
           <div class="flex gap-3">
-            <p class="text-preset-4-semibold text-red">{{ quantityStates[item.id] || 0 }}x</p>
+            <p class="text-preset-4-semibold text-red">
+              {{ quantityStates[item.id] || 0 }}x
+            </p>
             <p class="text-preset-4-regular text-rose-500">
               &commat; {{ item.price | currency : "USD" : "symbol" : "1.2-2" }}
             </p>
             <p class="text-preset-4-semibold text-rose-500">
-              {{ item.price | currency : "USD" : "symbol" : "1.2-2" }}
+              {{
+                calculateTotalPrice(item)
+                  | currency : "USD" : "symbol" : "1.2-2"
+              }}
             </p>
           </div>
         </div>
@@ -61,7 +66,7 @@
         </div>
         <div>
           <p class="text-preset-2-bold text-rose-900">
-            {{ calculateTotal() | currency : "USD" : "symbol" : "1.2-2" }}
+            {{ calculateOrderTotal() | currency : "USD" : "symbol" : "1.2-2" }}
           </p>
         </div>
       </div>
@@ -129,7 +134,9 @@
               <p class="text-preset-4-semibold">{{ item.name }}</p>
             </div>
             <div class="flex gap-3">
-              <p class="text-preset-4-semibold text-red">{{ quantityStates[item.id] || 0 }}x</p>
+              <p class="text-preset-4-semibold text-red">
+                {{ quantityStates[item.id] || 0 }}x
+              </p>
               <p class="text-preset-4-regular text-rose-500">
                 &commat;
                 {{ item.price | currency : "USD" : "symbol" : "1.2-2" }}
@@ -148,7 +155,7 @@
           </div>
           <div>
             <p class="text-preset-2-bold text-rose-900">
-              {{ calculateTotal() | currency : "USD" : "symbol" : "1.2-2" }}
+              {{ calculateOrderTotal() | currency : "USD" : "symbol" : "1.2-2" }}
             </p>
           </div>
         </div>
